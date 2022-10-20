@@ -7,6 +7,7 @@ public class Main {
         System.out.println(Factorial(5));
         double variable = Calc();
         System.out.println(variable);
+        System.out.println(Num1000(1000));
 
 
     }
@@ -56,6 +57,24 @@ public class Main {
         }
         return result;
     };
+     public static List<Integer> Num1000(int n) {
+        boolean prime[] = new boolean[n + 1];
+        Arrays.fill(prime, true);
+        for (int p = 2; p * p <= n; p++) {
+            if (prime[p]) {
+                for (int i = p * 2; i <= n; i += p) {
+                    prime[i] = false;
+                }
+            }
+        }
+        List<Integer> primeNumbers = new LinkedList<>();
+        for (int i = 2; i <= n; i++) {
+            if (prime[i]) {
+                primeNumbers.add(i);
+            }
+        }
+        return primeNumbers;
+    }
 
 
 
